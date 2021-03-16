@@ -1,6 +1,6 @@
-﻿# FormsPlotControl
+﻿# WpfPlotControl
 
-A simple plot control for use in Windows Forms apps.
+A simple plot control for use in Wpf apps.
 This control wraps an [OxyPlot](https://oxyplot.readthedocs.io/) plot control
 and provides the following functionality:
 

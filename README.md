@@ -16,7 +16,7 @@ Please see the [demo video](DataCaptureGuiDemo.mp4) to see how the final product
 * The plot title should be set to the waveform type generated.
 * Make sure to include your email in the app title bar, and your name in the banner.
 * Use the [DataCapture](DataCapture/Readme.md) library in this repo to generate the plot data.
-* Use the [FormsPlotControl](FormsPlotControl/Readme.md) if you are using Windows Forms or the [WpfPlotControl](WpfPlotControl/readme.md) if you are using WPF
+* Use the [FormsPlotControl](FormsPlotControl/Readme.md) if you are using Windows Forms or the [WpfPlotControl](WpfPlotControl/Readme.md) if you are using WPF
     * You can use a different Framework, but you will have figure out the plotting using an appropriate library. (The plot controls provided here are thin wrappers around [OxyPlot](https://oxyplot.readthedocs.io/).)
 * You don't need to add error checking, but think about what types of errors could occur in the app and how you would handle them.
 
