@@ -2,24 +2,33 @@
 
 Coding challenge for C# software development using Windows Forms or WPF.
 
-## Basic Spec
-
-Please see the [demo video](DataCaptureGuiDemo.mp4) to see how the final product should look and behave.
-
-* This project should just take a few (1-4) hours to complete.
+## Setup
 * It is assumed you have Visual Studio (Professional or Community is fine).
     * The provided projects target .NET framework 4.7.2 
+* Clone the repo and open the folder in File Explorer
+    * DataCaptureGuiDemo.mp4 shows a demo of the desired application in action.
+    * data-capture-service.exe is the web server that provides data for the application.
+    * Rocket.toml is a configuration file for the server
+    * DataCaptureGui.sln is the solution where you will code your application.
+
+## Basic Spec
+
+Create a Windows Forms or WPF application with the desired behavior.
+
+* Please see the [demo video](DataCaptureGuiDemo.mp4) to see how the final product should look and behave.
+* This project should just take a few (1-4) hours to complete.
 * Feel free to use the internet as needed.
-* Clone the solution and create a Windows Forms or WPF application with the desired behavior. 
-    * Use the [FormsPlotControl](FormsPlotControl/Readme.md) if you are using Windows Forms or the [WpfPlotControl](WpfPlotControl/Readme.md) if you are using WPF.
-    * You can use a different Framework, but you will have figure out the plotting using an appropriate library. (The plot controls provided here are thin wrappers around [OxyPlot](https://oxyplot.readthedocs.io/).)
+* Use the [FormsPlotControl](FormsPlotControl/Readme.md) if you are using Windows Forms or the [WpfPlotControl](WpfPlotControl/Readme.md) if you are using WPF.
+* You can use a different Framework, but you will have figure out the plotting using an appropriate library. (The plot controls provided here are thin wrappers around [OxyPlot](https://oxyplot.readthedocs.io/).)
 * Your application should function as a web client and use HTTP requests to get the data (see the section on the server below).
 * The Collect button should be disabled during capture, but all other controls should still be usable during the capture.
+    * Changing between Points, Lines, and Curves should work, the plot should update even during capture.
+    * Changing the waveform, scale and offset should work, but have no effect until the next capture. 
 * The exact appearance is not important but the app should resize correctly, like the demo.
     * Feel free to use different colors.
 * The plot title should be set to the waveform type generated.
 * Make sure to include your email in the app title bar, and your name in the banner.
-* The app should handle up to 10000 points. (Note that the server only provides up to 100 points at a time.)
+* The app should handle up to 10,000 points. (Note that the server only provides up to 100 points at a time.)
 * You don't need to add error checking, but think about what types of errors could occur in the app and how you would handle them.
 
 # Web Server
