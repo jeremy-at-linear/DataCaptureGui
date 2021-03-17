@@ -11,22 +11,32 @@ Please see the [demo video](DataCaptureGuiDemo.mp4) to see how the final product
     * The provided projects target .NET framework 4.7.2 
 * Feel free to use the internet as needed.
 * Clone the solution and create a Windows Forms or WPF application with the desired behavior. 
+    * Use the [FormsPlotControl](FormsPlotControl/Readme.md) if you are using Windows Forms or the [WpfPlotControl](WpfPlotControl/Readme.md) if you are using WPF.
+    * You can use a different Framework, but you will have figure out the plotting using an appropriate library. (The plot controls provided here are thin wrappers around [OxyPlot](https://oxyplot.readthedocs.io/).)
+* Your application should function as a web client and use HTTP requests to get the data (see the section on the server below).
+* The Collect button should be disabled during capture, but all other controls should still be usable during the capture.
 * The exact appearance is not important but the app should resize correctly, like the demo.
     * Feel free to use different colors.
 * The plot title should be set to the waveform type generated.
 * Make sure to include your email in the app title bar, and your name in the banner.
-* Use the [DataCapture](DataCapture/Readme.md) library in this repo to generate the plot data.
-* Use the [FormsPlotControl](FormsPlotControl/Readme.md) if you are using Windows Forms or the [WpfPlotControl](WpfPlotControl/Readme.md) if you are using WPF
-    * You can use a different Framework, but you will have figure out the plotting using an appropriate library. (The plot controls provided here are thin wrappers around [OxyPlot](https://oxyplot.readthedocs.io/).)
+* The app should handle up to 10000 points. (Note that the server only provides up to 100 points at a time.)
 * You don't need to add error checking, but think about what types of errors could occur in the app and how you would handle them.
+
+# Web Server
+
+* The server is a standalone exectuable called data-capture-service.exe
+* It is contained in the cloned solution, along with a text file "Rocket.toml". (These should be kept together in the same location.)
+* Out of the box it serves files to http://localhost:8194
+    * You can change the port by editing Rocket.toml.
+    * You can get a summary of the API endpoints by going to the URL above in your browser.
+    * If you have any issues running the server or getting set up, please contact us!
 
 ## Extra Credit
 * Add a menu bar with a help->about dialog. Put a link to a personal project page or something cool.
-* Create a new Waveform type called `Piecewise` in the `DataCapture` project add this to the drop down 
-of waveform choices in the GUI so it can be plotted. The value of the nth sample should be calculated as
-follows:
-    * 0 <= n < 5 - linearly interpolate between 20 and 180 (0->20, 4->180)
-    * 5 <= n < 10 - linearly interpolate between 200 and 500 (5->200, 9->500)
-    * 10 <= n < 15 - linearly interpolate between 450 and -150 (10->150, 140->-150)
-    * 15 <= n < 20 - linearly interpolate between -300 and 0 (15->-300, 19->0)
-    * for any sample n > 20, calculate as above using the remainder of n / 20.
+* Make it possible to cancel the capture. 
+    * Instead of disabling the collect button, change the text to say "Cancel".
+    * Clicking the button during a capture should stop the capture early. 
+        * If, for example, you are reading 1000 points and cancel just after points 300-399 get read,
+          it is OK to finish reading 400-499, but not to start 500-599).
+    * You can plot the partial capture.
+    * Whether the capture finishes or is cancelled, the capture button should reset to green and say "Capture" again.
